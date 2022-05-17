@@ -5,6 +5,8 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ItemController;
+use App\Http\Controllers\admin\ReserveController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,9 @@ use App\Http\Controllers\admin\ItemController;
 // });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 Auth::routes();
+Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');
 
+Route::get('/email/{id}', [App\Http\Controllers\EmailController::class, 'email'])->name('eamil');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
@@ -30,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::resource('slider', SliderController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('item', ItemController::class);
+    Route::resource('reserve', ReserveController::class);
 });
 
 // Route::get('admin/dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index']);

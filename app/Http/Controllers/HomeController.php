@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
